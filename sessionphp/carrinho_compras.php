@@ -7,9 +7,9 @@ $contador=0;
 
 $averi=array();
 $averi[0]=array('cocacola',"Não foi marcado");
-$averi[1]='havaianas';
-$averi[2]='maionese';
-$averi[3]='bola_de_fut';
+$averi[1]=array('havaianas',"Não foi marcado");
+$averi[2]=array('maionese',"Não foi marcado");
+$averi[3]=array('bola_de_fut',"Não foi marcado");
 if(isset($_POST['Comprar'])){
     while($contador<3){
         if(isset($_POST[$averi[$contador][0]])){
@@ -19,9 +19,9 @@ if(isset($_POST['Comprar'])){
         
         $contador++;
     }
-
+    echo $averi[$contador][1]."<br><br>";
+    
 }
-echo $averi[0][1]."<br><br>";
 
 echo "Maionese". $maionese." Quantidade = tal<br>";
 echo "Bola de Futbol". $bola_de_fut." Quantidade = tal<br>";
