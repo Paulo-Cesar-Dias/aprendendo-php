@@ -1,5 +1,33 @@
 <?php
-    
+$cocacola="não verificdado";
+$havaianas="não verificado";
+$maionese="não verificado";
+$bola_de_fut="não verificado";
+$contador=0;
+
+$averi=array();
+$averi[0]=array('cocacola',"Não foi marcado");
+$averi[1]='havaianas';
+$averi[2]='maionese';
+$averi[3]='bola_de_fut';
+if(isset($_POST['Comprar'])){
+    while($contador<3){
+        if(isset($_POST[$averi[$contador][0]])){
+            $averi[$contador][1]="Marcado";
+        }
+        
+        
+        $contador++;
+    }
+
+}
+echo $averi[0][1]."<br><br>";
+
+echo "Maionese". $maionese." Quantidade = tal<br>";
+echo "Bola de Futbol". $bola_de_fut." Quantidade = tal<br>";
+echo "havaianas". $havaianas." Quantidade = tal<br>";
+
+
 ?>
 
 <!DOCTYPE html>
@@ -27,35 +55,35 @@
             </tr>
             <tr>
                 <td>1</td>
-                <td><input type="checkbox" id="mercadoria1" value="mercadoria1" name="mercadoria[]"></td>
+                <td><input type="checkbox" id="mercadoria1" value="marcado" name="havaianas"></td>
                 <td>Chinelo Havaianas</td>
                 <td><input type="number" name="qtd1" min="0"></td>
                 <td>R$ 7,00</td>
             </tr>
             <tr>
                 <td>2</td>
-                <td><input type="checkbox" id="mercadoria2" value="mercadoria2" name="mercadoria[]"></td>
+                <td><input type="checkbox" id="mercadoria2" value="marcado" name="cocacola"></td>
                 <td>Coca-cola</td>
                 <td><input type="number" name="qtd2" min="0"></td>
                 <td>R$ 10,00</td>
             </tr>
             <tr>
                 <td>3</td>
-                <td><input type="checkbox" id="mercadoria3" value="mercadoria3" name="mercadoria[]"></td>
+                <td><input type="checkbox" id="mercadoria3" value="marcado" name="maionese"></td>
                 <td>Maionese</td>
                 <td><input type="number" name="qtd3" min="0"></td>
                 <td>R$ 5,00</td>
             </tr>
             <tr>
                 <td>4</td>
-                <td><input type="checkbox" id="mercadoria4" value="mercadoria4" name="mercadoria[]"></td>
+                <td><input type="checkbox" id="mercadoria4" value="marcado" name="bola_de_fut"></td>
                 <td>Bola de futebol</td>
                 <td><input type="number" name="qtd4" min="0"></td>
                 <td>R$ 50,00</td>
             </tr>
         </table><br>
 
-        <input type="submit" value="Comprar">
+        <input type="submit" name="Comprar">
     </form>
 </body>
 </html>
