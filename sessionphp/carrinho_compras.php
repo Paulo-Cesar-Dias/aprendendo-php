@@ -1,33 +1,37 @@
 <?php
-$cocacola="não verificdado";
-$havaianas="não verificado";
-$maionese="não verificado";
-$bola_de_fut="não verificado";
-$contador=0;
+    session_start();
+    $i = 0;
+    $_SESSION["ni"]=0;
+    $merc = array();
+    $merc[0] = "";
+    $merc[1] = "";
+    $merc[2] = "";
+    $merc[3] = "";
 
-$averi=array();
-$averi[0]=array('cocacola',"Não foi marcado");
-$averi[1]=array('havaianas',"Não foi marcado");
-$averi[2]=array('maionese',"Não foi marcado");
-$averi[3]=array('bola_de_fut',"Não foi marcado");
-if(isset($_POST['Comprar'])){
-    while($contador<3){
-        if(isset($_POST[$averi[$contador][0]])){
-            $averi[$contador][1]="Marcado";
+    $qtd = array();
+    $qtd[0] = "";
+    $qtd[1] = "";
+    $qtd[2] = "";
+    $qtd[3] = "";
+
+    if(isset($_POST["compre"])){
+        $comprar = $_POST["compre"];
+
+        while($i < 4){
+
+            if(isset($_POST["pd". $i])){
+                $merc[$i] = "Mercadoria " . $i . " foi selecionada";
+            }else{
+                $merc[$i] = "Mercadoria " . $i . " não selecionada";
+            }
+
+            if(isset($_POST["qtd".$i])){
+                $qtd[$i] = " || Quantidade: " . $_POST["qtd".$i] . "<br>";
+            }
+            
+            $i++;
         }
-        
-        
-        $contador++;
     }
-    echo $averi[$contador][1]."<br><br>";
-    
-}
-
-echo "Maionese". $maionese." Quantidade = tal<br>";
-echo "Bola de Futbol". $bola_de_fut." Quantidade = tal<br>";
-echo "havaianas". $havaianas." Quantidade = tal<br>";
-
-
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +45,18 @@ echo "havaianas". $havaianas." Quantidade = tal<br>";
     <script src='main.js'></script>
 </head>
 <body>
+    <?php 
+
+        $t = 0;
+        
+        while($t < 4){
+            echo $merc[$t] . $qtd[$t];
+             
+            $t++;
+        }
+
+    ?>
+
     <form action="carrinho_compras.php" method="post">
         <table>
             <tr>
@@ -54,36 +70,36 @@ echo "havaianas". $havaianas." Quantidade = tal<br>";
                 <th>Valor</th>
             </tr>
             <tr>
-                <td>1</td>
-                <td><input type="checkbox" id="mercadoria1" value="marcado" name="havaianas"></td>
+                <td>0</td>
+                <td><input type="checkbox" id="mercadoria0" value="mercadoria0" name="pd0"></td>
                 <td>Chinelo Havaianas</td>
-                <td><input type="number" name="qtd1" min="0"></td>
+                <td><input type="number" name="qtd0" min="0"></td>
                 <td>R$ 7,00</td>
             </tr>
             <tr>
-                <td>2</td>
-                <td><input type="checkbox" id="mercadoria2" value="marcado" name="cocacola"></td>
+                <td>1</td>
+                <td><input type="checkbox" id="mercadoria1" value="mercadoria1" name="pd1"></td>
                 <td>Coca-cola</td>
-                <td><input type="number" name="qtd2" min="0"></td>
+                <td><input type="number" name="qtd1" min="0"></td>
                 <td>R$ 10,00</td>
             </tr>
             <tr>
-                <td>3</td>
-                <td><input type="checkbox" id="mercadoria3" value="marcado" name="maionese"></td>
+                <td>2</td>
+                <td><input type="checkbox" id="mercadoria2" value="mercadoria2" name="pd2"></td>
                 <td>Maionese</td>
-                <td><input type="number" name="qtd3" min="0"></td>
+                <td><input type="number" name="qtd2" min="0"></td>
                 <td>R$ 5,00</td>
             </tr>
             <tr>
-                <td>4</td>
-                <td><input type="checkbox" id="mercadoria4" value="marcado" name="bola_de_fut"></td>
+                <td>3</td>
+                <td><input type="checkbox" id="mercadoria3" value="mercadoria3" name="pd3"></td>
                 <td>Bola de futebol</td>
-                <td><input type="number" name="qtd4" min="0"></td>
+                <td><input type="number" name="qtd3" min="0"></td>
                 <td>R$ 50,00</td>
             </tr>
         </table><br>
 
-        <input type="submit" name="Comprar">
+        <input type="submit" value="Comprar" name="compre">
     </form>
 </body>
 </html>
